@@ -16,11 +16,11 @@ and it's implementation in Go is very close to this definition:
 import "github.com/paulgriffiths/gods/sets"
 
 type Dfa struct {
-	Q      int            // Number of states
-	S      sets.SetRune   // Alphabet
-	D      []map[rune]int // Transition function
-	Start  int            // Start state
-	Accept sets.SetInt    // Set of accepting states
+	Q  int            // Number of states
+	S  sets.SetRune   // Alphabet
+	D  []map[rune]int // Transition function
+	Qs int            // Start state
+	f  sets.SetInt    // Set of accepting states
 }
 ```
 
