@@ -20,7 +20,7 @@ type Dfa struct {
 	S  sets.SetRune   // Alphabet
 	D  []map[rune]int // Transition function
 	Qs int            // Start state
-	f  sets.SetInt    // Set of accepting states
+	F  sets.SetInt    // Set of accepting states
 }
 ```
 
