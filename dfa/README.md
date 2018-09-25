@@ -10,7 +10,7 @@ Formally, a DFA is a 5-tuple (𝑄, 𝛴, 𝛿, 𝑞𝟢, 𝐹) where:
 * 𝑞𝟢 ∈ 𝑄 is the start state; and
 * 𝐹 ⊆ 𝑄 is the set of accept states.
 
-and it's implementation in Go is very close to this definition:
+and our Go implementation of it is very close to this definition:
 
 ```go
 import "github.com/paulgriffiths/gods/sets"
