@@ -1,0 +1,19 @@
+# Grammar for simple regular expression parser.
+#
+# Eliminates left recursion to facilitate predictive parsing.
+
+expr        -> concat restExpr
+restExpr    -> | concat restExpr
+            -> {e}
+
+concat      -> closure restConcat
+restConcat  -> closure restConcat
+            -> {e}
+
+closure     -> term*
+            -> term
+
+term        -> symbol
+            -> (expr)
+
+symbol      -> [a-zA-Z0-9]
