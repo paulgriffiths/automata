@@ -22,7 +22,8 @@ The Kleene star has the highest priority, followed by concatention, then
 union. Parentheses may be used to alter the priority. Examples of supported
 regular expressions over the alphabet {a, b} include:
 
-* ab
+* aba
+* aa\*bb\*
 * (a|b)\*
 * aa(a|b)\*bb\*
 * ((aa|bb)(aa|bb))\*
