@@ -2,7 +2,7 @@
 
 This package simulates a nondeterministic finite automaton (NFA).
 
-Formally, a NFA is a 5-tuple (𝑄, 𝛴, 𝛿, 𝑞𝟢, 𝐹) where:
+Formally, an NFA is a 5-tuple (𝑄, 𝛴, 𝛿, 𝑞𝟢, 𝐹) where:
 
 * 𝑄 is a finite set called the states;
 * 𝛴 is a finite set called the alphabet;
@@ -78,3 +78,5 @@ for _, s := range []string{"aaabba", "baaab"} {
 // DFA accepts prefix "aaa" of string "aaabba".
 // DFA accepts prefix "b" of string "baaab".
 ```
+
+Note the use of `0` in the transition function to denote 𝜀-transitions.
