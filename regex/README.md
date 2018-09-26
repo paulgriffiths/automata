@@ -12,7 +12,7 @@ as they lack, for example, wildcards, character classes, metacharacters,
 and capturing groups, among other things.
 
 Regular expressions in formal language theory are equivalent to regular
-grammars, and the implement three operations over a language's alphabet:
+grammars, and they provide three operations over a language's alphabet:
 
 * concatenation;
 * union, or alternation; and
@@ -23,8 +23,8 @@ union. Parentheses may be used to alter the priority. Examples of supported
 regular expressions over the alphabet {a, b} include:
 
 * ab
-* (a|b)*
-* aa(a|b)*bb*
+* (a|b)\*
+* aa(a|b)\*bb\*
 
 The `Compile` method converts a regular expression in string form to an
 equivalent deterministic finite automata. The `Match` and `MatchPrefix`
