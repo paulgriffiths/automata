@@ -63,8 +63,7 @@ for _, s := range []string{"aaaa", "bbb", "aaabba"} {
 dfa := automaton.ToDfa()
 
 for _, s := range []string{"aaabba", "baaab"} {
-    accepted, n := dfa.AcceptsPrefix(s)
-    if accepted {
+    if accepted, n := dfa.AcceptsPrefix(s); accepted {
         fmt.Printf("DFA accepts prefix %q of string %q.\n", s[:n], s)
     } else {
         fmt.Printf("DFA does not accept any prefix of string %q.\n", s)
