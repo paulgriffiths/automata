@@ -36,7 +36,7 @@ expression.
 
 ```go
 s := "aa(a|b)*bb"
-r := regex.Compile("aa(a|b)*bb")
+r := regex.Compile(s)
 
 for _, t := range []string{"aabb", "aaabb", "aba", "aabbbba"} {
     if r.Match(t) {
