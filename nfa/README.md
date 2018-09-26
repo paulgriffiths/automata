@@ -80,3 +80,5 @@ for _, s := range []string{"aaabba", "baaab"} {
 ```
 
 Note the use of `0` in the transition function to denote 𝜀-transitions.
+Accordingly, the null character may not be a member of the NFA's alphabet
+in this implementation.
