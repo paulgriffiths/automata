@@ -1,9 +1,7 @@
 # Automata
 
-**automata** is a collection of Golang packages and applications concerning
-automata and regular expressions.
-
-The principle purpose of this project is for me to practise writing in Go.
+**automata** is a collection of Golang packages and applications involving
+deterministic and nondeterministic finite automata, and regular expressions.
 
 Contents include:
 
@@ -13,4 +11,4 @@ finite automata
 * Conversion of nondeterministic to deterministic finite automata
 
 * Construction of deterministic and nondeterministic finite automata from
-regular expressions
+regular expressions using the McNaughton-Yamada-Thompson algorithm.
