@@ -28,7 +28,7 @@ regular expressions over the alphabet {a, b} include:
 * aa(a|b)\*bb\*
 * ((aa|bb)(aa|bb))\*
 
-The `Compile` method converts a regular expression in string form to an
+The `Compile` function converts a regular expression in string form to an
 equivalent deterministic finite automata. The `Match` and `MatchPrefix`
 methods of the compiled regular expression may then be used to test whether
 an entire string or any prefix of a string can be matched by the regular
