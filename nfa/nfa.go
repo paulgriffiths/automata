@@ -33,8 +33,8 @@ func (n Nfa) EclosureS(s int) sets.SetInt {
 		next := sets.NewSetInt()
 		for _, state := range current.Elements() {
 			if eStates, ok := n.D[state][0]; ok {
-				ecl = ecl.Union(eStates)
-				next = next.Union(eStates)
+				ecl.Merge(eStates)
+				next.Merge(eStates)
 			}
 		}
 		current = next
@@ -48,7 +48,7 @@ func (n Nfa) EclosureS(s int) sets.SetInt {
 func (n Nfa) EclosureT(t sets.SetInt) sets.SetInt {
 	ecl := sets.NewSetInt()
 	for _, state := range t.Elements() {
-		ecl = ecl.Union(n.EclosureS(state))
+		ecl.Merge(n.EclosureS(state))
 	}
 	return ecl
 }
@@ -59,7 +59,7 @@ func (n Nfa) Move(t sets.SetInt, a rune) sets.SetInt {
 	trans := sets.NewSetInt()
 	for _, state := range t.Elements() {
 		if p, ok := n.D[state][a]; ok {
-			trans = trans.Union(p)
+			trans.Merge(p)
 		}
 	}
 	return trans
