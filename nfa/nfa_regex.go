@@ -6,11 +6,11 @@ import "github.com/paulgriffiths/gods/sets"
 // single transition on the specified input character.
 func NewRuneNfa(r rune) Nfa {
 	return Nfa{
-		Q:      2,
-		S:      sets.NewSetRune(r),
-		D:      []map[rune]sets.SetInt{{r: sets.NewSetInt(1)}, {}},
-		Start:  0,
-		Accept: sets.NewSetInt(1),
+		Q:  2,
+		S:  sets.NewSetRune(r),
+		D:  []map[rune]sets.SetInt{{r: sets.NewSetInt(1)}, {}},
+		Qs: 0,
+		F:  sets.NewSetInt(1),
 	}
 }
 
@@ -23,11 +23,11 @@ func NewRuneNfa(r rune) Nfa {
 // are used together.
 func NewConcatNfa(a, b Nfa) Nfa {
 	return Nfa{
-		Q:      a.Q + b.Q - 1,
-		S:      a.S.Union(b.S),
-		D:      append(a.D[:a.Q-1], advanceD(b.D, a.Q-1)...),
-		Start:  0,
-		Accept: advanceSet(b.Accept, a.Q-1),
+		Q:  a.Q + b.Q - 1,
+		S:  a.S.Union(b.S),
+		D:  append(a.D[:a.Q-1], advanceD(b.D, a.Q-1)...),
+		Qs: 0,
+		F:  advanceSet(b.F, a.Q-1),
 	}
 }
 
@@ -49,11 +49,11 @@ func NewUnionNfa(a, b Nfa) Nfa {
 	dJ = append(dJ, map[rune]sets.SetInt{})
 
 	return Nfa{
-		Q:      a.Q + b.Q + 2,
-		S:      a.S.Union(b.S),
-		D:      dJ,
-		Start:  0,
-		Accept: sets.NewSetInt(a.Q + b.Q + 1),
+		Q:  a.Q + b.Q + 2,
+		S:  a.S.Union(b.S),
+		D:  dJ,
+		Qs: 0,
+		F:  sets.NewSetInt(a.Q + b.Q + 1),
 	}
 }
 
@@ -70,11 +70,11 @@ func NewClosureNfa(n Nfa) Nfa {
 	d = append(d, map[rune]sets.SetInt{})
 	d[n.Q][0] = sets.NewSetInt(1, n.Q+1)
 	return Nfa{
-		Q:      n.Q + 2,
-		S:      n.S,
-		D:      d,
-		Start:  0,
-		Accept: sets.NewSetInt(n.Q + 1),
+		Q:  n.Q + 2,
+		S:  n.S,
+		D:  d,
+		Qs: 0,
+		F:  sets.NewSetInt(n.Q + 1),
 	}
 }
 

@@ -8,7 +8,7 @@ import (
 // makeDtran builds a transition table that can be used to
 // build a deterministic finite automaton.
 func (n Nfa) makeDtran() dtran {
-	ds := newDtran(n.EclosureS(n.Start))
+	ds := newDtran(n.EclosureS(n.Qs))
 
 	i := 0
 	for i < ds.length() {
@@ -36,7 +36,7 @@ func (n Nfa) ToDfa() dfa.Dfa {
 	tfunc := []map[rune]int{}
 
 	for i := 0; i < ds.length(); i++ {
-		if !n.Accept.Intersection(ds[i].nfaState).IsEmpty() {
+		if !n.F.Intersection(ds[i].nfaState).IsEmpty() {
 			accepts.Insert(i)
 		}
 		tfunc = append(tfunc, ds[i].trans)

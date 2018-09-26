@@ -4,20 +4,20 @@ import "github.com/paulgriffiths/gods/sets"
 
 // Nfa implements a nondeterministic finite automaton.
 type Nfa struct {
-	Q      int                    // Number of states
-	S      sets.SetRune           // Alphabet
-	D      []map[rune]sets.SetInt // Transition function
-	Start  int                    // Start state
-	Accept sets.SetInt            // Set of accepting states
+	Q  int                    // Number of states
+	S  sets.SetRune           // Alphabet
+	D  []map[rune]sets.SetInt // Transition function
+	Qs int                    // Start state
+	F  sets.SetInt            // Set of accepting states
 }
 
 // Accepts returns true if the NFA accepts the provided string.
 func (n Nfa) Accepts(input string) bool {
-	current := n.EclosureS(n.Start)
+	current := n.EclosureS(n.Qs)
 	for _, letter := range input {
 		current = n.EclosureT(n.Move(current, letter))
 	}
-	return !n.Accept.Intersection(current).IsEmpty()
+	return !n.F.Intersection(current).IsEmpty()
 }
 
 // EclosureS returns the set of states reachable from the specified
