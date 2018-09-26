@@ -25,6 +25,7 @@ regular expressions over the alphabet {a, b} include:
 * ab
 * (a|b)\*
 * aa(a|b)\*bb\*
+* ((aa|bb)(aa|bb))\*
 
 The `Compile` method converts a regular expression in string form to an
 equivalent deterministic finite automata. The `Match` and `MatchPrefix`
