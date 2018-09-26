@@ -4,12 +4,10 @@ import (
 	"fmt"
 	"github.com/paulgriffiths/automata/dfa"
 	"github.com/paulgriffiths/gods/sets"
-	_ "os"
-	_ "strings"
 )
 
 func Example() {
-	automata := dfa.Dfa{
+	automaton := dfa.Dfa{
 		Q: 5,
 		S: sets.NewSetRune('a', 'b'),
 		D: []map[rune]int{
@@ -24,7 +22,7 @@ func Example() {
 	}
 
 	for _, s := range []string{"abbba", "abbb"} {
-		if automata.Accepts(s) {
+		if automaton.Accepts(s) {
 			fmt.Printf("DFA accepts string %q.\n", s)
 		} else {
 			fmt.Printf("DFA does not accept string %q.\n", s)
@@ -32,7 +30,7 @@ func Example() {
 	}
 
 	for _, s := range []string{"ababb", "abbbb"} {
-		accepted, n := automata.AcceptsPrefix(s)
+		accepted, n := automaton.AcceptsPrefix(s)
 		if accepted {
 			fmt.Printf("DFA accepts prefix %q of string %q.\n", s[:n], s)
 		} else {
